@@ -1,7 +1,5 @@
 package blr.tg.fod;
 
-import java.util.Arrays;
-
 /**
  * Created by Uleychik_SA on 19.3.17.
  */
@@ -13,35 +11,31 @@ public class Fod {
         this.nums = nums;
     }
 
-    public int[] sectors() {
+    public int wheelSize() {
 
-        int wheelSize = (nums.length - 1) / 2;
-        int[] wheel;
-        int[] realWheel = Arrays.copyOfRange(nums, 0, nums.length - 1);
+        int wheelSize = nums.length - 1;
+        int wheel = (nums.length - 1) / 2;
 
-
-        while (wheelSize >= 1) {
-            wheel = Arrays.copyOfRange(nums, 0, wheelSize);
+        while (wheel >= 1) {
             boolean finded = true;
-
-            WEEL:
-            for (int i = 0; i < nums.length - 1; i += wheelSize) {
-                for (int j = 0; j < wheelSize; j++) {
-                    if (wheel[j] != nums[i + j]) {
+            WHEEL:
+            for (int i = 0; i < nums.length - 1; i += wheel) {
+                for (int j = 0; j < wheel; j++) {
+                    if (nums[j] != nums[i + j]) {
                         finded = false;
-                        break WEEL;
+                        break WHEEL;
                     }
                 }
             }
             //
             if (finded) {
-                realWheel = wheel;
+                wheelSize = wheel;
             }
-            wheelSize--;
+            wheel--;
         }
 
 
-        return realWheel;
+        return wheelSize;
 
     }
 }

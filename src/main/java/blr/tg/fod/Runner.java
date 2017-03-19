@@ -22,7 +22,7 @@ public class Runner {
             nums[i] = Integer.parseInt(strings[i]);
         }
         ///
-        System.out.println("sectors:" + new Fod(nums).sectors().length);
+        System.out.println("sectors:" + new Fod(nums).wheelSize());
     }
 
 }
