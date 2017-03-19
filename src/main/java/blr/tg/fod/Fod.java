@@ -13,24 +13,30 @@ public class Fod {
 
     public int wheelSize() {
 
-        int wheelSize = nums.length - 1;
-        int wheel = (nums.length - 1) / 2;
+        final int sectors = nums.length - 1;
+        int wheelSize = sectors;
+        int wheel = sectors / 2;
 
         while (wheel >= 1) {
-            boolean finded = true;
-            WHEEL:
-            for (int i = 0; i < nums.length - 1; i += wheel) {
-                for (int j = 0; j < wheel; j++) {
-                    if (nums[j] != nums[i + j]) {
-                        finded = false;
-                        break WHEEL;
+
+            if (sectors % wheel == 0) {
+                boolean finded = true;
+
+                WHEEL:
+                for (int i = 0; i < sectors; i += wheel) {
+                    for (int j = 0; j < wheel; j++) {
+                        if (nums[j] != nums[i + j]) {
+                            finded = false;
+                            break WHEEL;
+                        }
                     }
+                }
+
+                if (finded) {
+                    wheelSize = wheel;
                 }
             }
             //
-            if (finded) {
-                wheelSize = wheel;
-            }
             wheel--;
         }
 

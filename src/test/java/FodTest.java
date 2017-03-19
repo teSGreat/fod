@@ -37,4 +37,16 @@ public class FodTest extends Assert {
         int[] m = new int[]{1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1};
         assertArrayEquals(Arrays.copyOfRange(m, 0, 3), Arrays.copyOfRange(m, 0, new Fod(m).wheelSize()));
     }
+
+    @Test
+    public void test5() {
+        int[] m = new int[]{1, 1, 2, 1,
+                            1, 1, 2, 1,
+                            1, 1, 2, 1,
+                            1, 1, 2, 1,
+                            1, 1, 2, 1,
+                            1, 1, 2, 1, 1};
+        assertArrayEquals(Arrays.copyOfRange(m, 0, 4), Arrays.copyOfRange(m, 0, new Fod(m).wheelSize()));
+    }
+
 }
